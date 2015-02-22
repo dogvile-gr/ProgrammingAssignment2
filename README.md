@@ -29,19 +29,23 @@ really a list containing a function to
 
 <!-- -->
 
-    makeVector <- function(x = numeric()) {
-            m <- NULL
-            set <- function(y) {
-                    x <<- y
-                    m <<- NULL
-            }
-            get <- function() x
-            setmean <- function(mean) m <<- mean
-            getmean <- function() m
-            list(set = set, get = get,
-                 setmean = setmean,
-                 getmean = getmean)
-    }
+```{r}
+
+
+makeCacheMatrix <- function(x = matrix()) {
+        inv <- NULL
+        set <- function(y) {
+                x <<- y
+                inv <<- NULL
+        }
+        get <- function() x
+        setinverse <- function(inverse) inv <<- inverse
+        getinverse <- function() inv
+        list(set=set, get=get, setinverse=setinverse, getinverse=getinverse)
+}
+
+
+```
 
 The following function calculates the mean of the special "vector"
 created with the above function. However, it first checks to see if the
